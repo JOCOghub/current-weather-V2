@@ -4,9 +4,9 @@ class API
     def self.get_city_weather(city)
         url = "https://api.openweathermap.org/data/2.5/weather?q=#{city}&appid=#{@@api_key}"
         response = HTTParty.get(url)
-       Location.new{name: response["name"], main: response["main"], description: response["description"],
+       City.new({name: response["name"], main: response["main"], description: response["description"],
          temperature: response["temp"], feels_like: response["feels_like"], high: response["temp_min"],
-        low: response["temp_max"]}
+        low: response["temp_max"]})
     end                 
    
 end   

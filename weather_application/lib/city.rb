@@ -1,4 +1,4 @@
-class Location
+class City
     attr_accessor :name, :main, :description, :temperature, :feels_like, :high, :low
 
     @@all = []
@@ -10,8 +10,8 @@ class Location
       @@all << self 
     end 
 
-   def find_by_name(name)
-      @@all.find{&:name}
+   def self.find_by_name(name)
+      @@all.detect{|city| city.name == name}
    end   
 
 end   
