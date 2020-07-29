@@ -3,7 +3,7 @@ class CLI
     #    welcome
         
     # end     
-   
+    attr_accessor :current_city
     def welcome
         puts "Welcome to the City weather application App!"
         puts "Enter the City you would like weather info for or press exit."
@@ -13,13 +13,13 @@ class CLI
     
     def self.get_weather_for_city(input)#this makes it that if user already asked for certain
        if City.find_by_name(input)#city then it would be stored and we wouldnt have
-          current_city = City.find_by_name(input)#to look up API data again
+          self.current_city = City.find_by_name(input)#to look up API data again
        else 
-          response = API.new.get_city_weather(input)
-         if valid?#Find out what would make this valid or not
-            current_city = City.new(response)
+          response = API.get_city_weather(input)#might need API.new.get_city_weather
+         if self.current_city.name == response["name"]  #valid?#Find out what would make this valid or not
+            self.current_city = City.new(response)
          else 
-            puts "Please enter a valid City name" 
+            puts "Please enter a valid City's name" 
             self.get_weather_for_city  
          end 
        end 
@@ -38,9 +38,8 @@ class CLI
     # end
     
     def self.show_attributes
-        
-
-        self.menu #need self? ask govgov
+       puts self.current_city
+        self.menu 
     end   
 
     def menu

@@ -6,7 +6,7 @@ class API
         response = HTTParty.get(url)
        City.new({name: response["name"], main: response["main"], description: response["description"],
          temperature: response["temp"], feels_like: response["feels_like"], high: response["temp_min"],
-        low: response["temp_max"]})
+        low: response["temp_max"]}) #<-this is my constructor
     end                 
    
-end   
+end   #other version is just return hash with no variable

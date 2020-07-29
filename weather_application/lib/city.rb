@@ -11,7 +11,7 @@ class City
     end 
 
    def self.find_by_name(name)
-      @@all.detect{|city| city.name == name}
+      @@all.detect{|city| city.name == name} #&:
    end   
 
 end   
