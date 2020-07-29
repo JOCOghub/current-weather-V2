@@ -7,15 +7,15 @@ class CLI
     def welcome
         puts "Welcome to the City weather application App!"
         puts "Enter the City you would like weather info for or press exit."
-        city = gets.strip 
-        self.get_weather_for_city(city)
+        input = gets.strip 
+        self.get_weather_for_city(input)
     end   
     
-    def self.get_weather_for_city(city)#this makes it that if user already asked for certain
-       if City.find_by_name(city)#city then it would be stored and we wouldnt have
-          current_city = City.find_by_name(city)#to look up API data again
+    def self.get_weather_for_city(input)#this makes it that if user already asked for certain
+       if City.find_by_name(input)#city then it would be stored and we wouldnt have
+          current_city = City.find_by_name(input)#to look up API data again
        else 
-          response = API.new.get_city_weather(city)
+          response = API.new.get_city_weather(input)
          if valid?#Find out what would make this valid or not
             current_city = City.new(response)
          else 
@@ -54,7 +54,6 @@ class CLI
         puts "invalid input"
         menu   
        end
-        self.goodbye 
     end       
     
 end  
