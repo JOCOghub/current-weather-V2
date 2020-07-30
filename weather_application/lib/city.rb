@@ -1,17 +1,16 @@
 class City
-    attr_accessor :name, :main, :description, :temperature, :feels_like, :high, :low
-
+    attr_accessor :weather
     @@all = []
 
     def initialize(hash)
       hash.each do |k, v|
         self.send("#{k}=", v)
-        end    #might need to connect this method to show attributes
+      end    
       @@all << self 
     end 
 
-   def self.find_by_name(name) #make sure you know how to call this
-      @@all.detect{|city| city.name == name} #&:
+   def self.find_by_name(name) 
+      @@all.detect(&:name) 
    end   
 
    def self.all 

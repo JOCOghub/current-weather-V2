@@ -10,9 +10,9 @@ class CLI
         end   
     end   
     
-    def get_weather_for_city(input)#this makes it that if user already asked for certain
-       if City.find_by_name(input)#city then it would be stored and we wouldnt have
-          current_city = City.find_by_name(input)#to look up API data again
+    def get_weather_for_city(input)
+       if City.find_by_name(input)
+          current_city = City.find_by_name(input)
           show_attributes(current_city)
        else
           current_city = API.get_city_weather(input)
@@ -32,7 +32,8 @@ class CLI
     end       
 
     def show_attributes(current_city)
-        print current_city#how
+        puts "Weather for your city:"
+        current_city.weather.each { |k,v| puts " #{k}: #{v} "} 
         self.menu 
     end   
 
