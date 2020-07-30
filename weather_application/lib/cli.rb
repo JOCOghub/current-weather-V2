@@ -11,12 +11,12 @@ class CLI
     end   
     
     def get_weather_for_city(input)
-       if City.find_by_name(input)
-          current_city = City.find_by_name(input)
-          show_attributes(current_city)
+       if City.find(input)
+          current_city = City.find(input)
+          show_attributes(current_city, input)
        else
           current_city = API.get_city_weather(input)
-          show_attributes(current_city) if current_city
+          show_attributes(current_city, input) if current_city
        end  
         invalid_city_name
     end
@@ -31,8 +31,8 @@ class CLI
         end  
     end       
 
-    def show_attributes(current_city)
-        puts "Weather for your city:"
+    def show_attributes(current_city,input)
+        puts "Weather for #{input.capitalize}:"
         current_city.weather.each { |k,v| puts " #{k}: #{v} "} 
         self.menu 
     end   
@@ -49,5 +49,5 @@ class CLI
            self.menu   
         end
     end       
-    #MAKE SURE YOU CHECK ALL COMMENTS AT THE END
+    
 end  

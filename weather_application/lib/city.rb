@@ -1,5 +1,5 @@
 class City
-    attr_accessor :weather
+    attr_accessor :weather, :city
     @@all = []
 
     def initialize(hash)
@@ -9,8 +9,8 @@ class City
       @@all << self 
     end 
 
-   def self.find_by_name(name) 
-      @@all.detect(&:name) 
+   def self.find(city)
+      @@all.detect(&:city) 
    end   
 
    def self.all 
