@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require_relative '../config/environment.rb'
 
-cli = CLI.new
-cli.welcome
-#CLI.new.welcome
+controller = CLI.new
+controller.welcome
