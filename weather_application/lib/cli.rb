@@ -1,58 +1,49 @@
 class CLI
     # def run
     #    welcome
-        
+    #    API.get_city_weather(input)
+    #    get_weather_for_city(input)
+    #    show_attributes
+    #    menu
     # end     
     attr_accessor :current_city
     def welcome
         puts "Welcome to the City weather application App!"
         puts "Enter the City you would like weather info for or press exit."
         input = gets.strip 
-        self.get_weather_for_city(input)
+        get_weather_for_city(input)
     end   
     
-    def self.get_weather_for_city(input)#this makes it that if user already asked for certain
+    def get_weather_for_city(input)#this makes it that if user already asked for certain
        if City.find_by_name(input)#city then it would be stored and we wouldnt have
-          self.current_city = City.find_by_name(input)#to look up API data again
+          @current_city = City.find_by_name(input)#to look up API data again
        else 
-          response = API.get_city_weather(input)#might need API.new.get_city_weather
-         if self.current_city.name == response["name"]  #valid?#Find out what would make this valid or not
-            self.current_city = City.new(response)
-         else 
-            puts "Please enter a valid City's name" 
-            self.get_weather_for_city  
-         end 
-       end 
-       self.show_attributes
-    #    self.prompt_user   
-    end     
-    
-    # def self.prompt_user
-    #     puts "Enter w to see the weather details for your selected city "
-    #     input = gets.strip 
-    #     if input = "w"
-    #         self.show_attributes
-    #     else 
-    #        self.prompt_user
-    #     end    
-    # end
-    
-    def self.show_attributes
-       puts self.current_city
+          @current_city = API.get_city_weather(input)#might need API.new.get_city_weather
+       end  
+    end
+
+    def self.invalid_city_name
+        puts "Please enter a valid City's name"  
+        input = gets.strip
+        API.get_city_weather(input)    
+    end       
+
+    def self.show_attributes(current_city)
+        print current_city#how
         self.menu 
     end   
 
-    def menu
-       puts "Enter 1 to go to main menu or press `exit`"
-       input = gets.strip 
-       if input = "1"
-          self.welcome 
-       elsif input = "exit"   
-          abort("Come back for more weather updates")
-       else 
-        puts "invalid input"
-        menu   
-       end
+    def self.menu
+        puts "Enter 1 to go to main menu or press `exit`"
+        input = gets.strip 
+        if input == "1"
+           self.welcome #breaking code
+        elsif input == "exit"   
+           abort("Come back for more weather updates")
+        else 
+           puts "invalid input"
+           self.menu   
+        end
     end       
-    
+    #MAKE SURE YOU CHECK ALL COMMENTS AT THE END
 end  
