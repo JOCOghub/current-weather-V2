@@ -1,7 +1,7 @@
 class CLI
     def welcome
-        puts "Welcome to the City weather App!"
-        puts "Enter the City you would like weather info for or press exit."
+        puts "Welcome to the City Weather App!"
+        puts "Enter the city you would like weather info for or press exit."
         input = gets.strip 
         if input == "exit"
           abort("Come back for more weather updates.")
@@ -22,7 +22,7 @@ class CLI
     end
    
     def invalid_city_name
-        puts "Please enter a valid City's name or press `exit`"  
+        puts "Please enter a valid city's name or press `exit`"  
         input = gets.strip
         if input == "exit"
             abort("Come back for more weather updates.")
