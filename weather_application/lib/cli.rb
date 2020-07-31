@@ -4,7 +4,7 @@ class CLI
         puts "Enter the city you would like weather info for or press exit."
         input = gets.strip 
         if input == "exit"
-          abort("Come back for more weather updates.")
+          abort("Come back for more weather updates!")
         else  
           get_weather_for_city(input)
         end   
@@ -25,9 +25,9 @@ class CLI
         puts "Please enter a valid city's name or press `exit`"  
         input = gets.strip
         if input == "exit"
-            abort("Come back for more weather updates.")
+           abort("Come back for more weather updates!")
         else   
-            get_weather_for_city(input)
+           get_weather_for_city(input)
         end  
     end       
 
