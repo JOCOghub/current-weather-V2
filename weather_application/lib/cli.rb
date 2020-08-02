@@ -1,9 +1,9 @@
 class CLI
     def welcome
         puts "Welcome to the City Weather App!"
-        puts "Enter the city you would like weather info for or press exit to leave the application."
+        puts "Enter the city you would like weather info for or enter `q` to exit the application."
         input = gets.strip 
-        if input == "exit"
+        if input == "q"
           abort("Come back for more weather updates!")
         else  
           get_weather_for_city(input)
@@ -22,9 +22,9 @@ class CLI
     end
    
     def invalid_city_name
-        puts "Please enter a valid city's name or press `exit`"  
+        puts "Please enter a valid city's name or enter `q` to exit"  
         input = gets.strip
-        if input == "exit"
+        if input == "q"
            abort("Come back for more weather updates!")
         else   
            get_weather_for_city(input)
@@ -38,12 +38,12 @@ class CLI
     end   
 
     def menu
-        puts "Enter 1 to go to main menu or press `exit` to leave the application"
+        puts "Enter 1 to go to main menu or enter `q` to exit the application"
         input = gets.strip 
         if input == "1"
            self.welcome
-        elsif input == "exit"   
-           abort("Come back for more weather updates")
+        elsif input == "q"   
+           abort("Come back for more weather updates!")
         else 
            puts "invalid input"
            self.menu   

@@ -5,7 +5,7 @@ class API
         response = HTTParty.get(url)
         if !response["message"]
             current_city = City.new({weather: response["main"]})
-            return current_city
+            current_city
         else 
             nil       
         end      

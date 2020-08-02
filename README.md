@@ -2,7 +2,7 @@
 This Ruby CLI displays the current weather for any city in the world via https://home.openweathermap.org/ website.
 
 ## Installation
-* ```$```
+Simply clone this repository to run or edit.
 
 ### Usage
 * Type the following below in your terminal and then follow the prompts.
